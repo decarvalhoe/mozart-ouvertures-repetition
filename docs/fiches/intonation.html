@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Justesse — méthode et accords à travailler</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>
+/* Layout: a conductor's-score margin — rehearsal-letter rail on the left, 68ch reading column, bar numbers as mono chips. */
+:root{
+  --bg:#F5F6F8; --surface:#FFFFFF; --ink:#16181D; --muted:#5B6270; --line:#D9DDE3;
+  --accent:#1E4D7B; --accent-soft:#E4EDF6; --mark:#A3302A; --mark-soft:#F6E6E4; --ok:#2E6B3F; --ok-soft:#E3EFE6;
+  --display:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",Consolas,"Courier New",monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#15181D; --surface:#1C2027; --ink:#E8EAEE; --muted:#9AA3B0; --line:#2F353E;
+  --accent:#8FBCEB; --accent-soft:#1F2E40; --mark:#E8857A; --mark-soft:#3A2321; --ok:#8CCB9B; --ok-soft:#1F3326; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#15181D; --surface:#1C2027; --ink:#E8EAEE; --muted:#9AA3B0; --line:#2F353E;
+  --accent:#8FBCEB; --accent-soft:#1F2E40; --mark:#E8857A; --mark-soft:#3A2321; --ok:#8CCB9B; --ok-soft:#1F3326; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;margin:0}
+a{color:var(--accent)} a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:600}
+h2{font-size:clamp(1.65rem,3.2vw,2.3rem);font-weight:600;margin-block:2.6rem .9rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+h3{font-size:1.4rem;font-weight:600;margin-block:1.8rem .5rem}
+h4{font-size:1.12rem;font-weight:700;font-family:var(--body);margin-block:1.3rem .35rem}
+p{margin-block:0 .9rem} ul,ol{margin-block:0 .9rem;padding-inline-start:1.4rem} li{margin-block:.22rem}
+li>p{margin-block:0 .3rem}
+strong{font-weight:600}
+blockquote{margin:1rem 0;padding:.6rem 1rem;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:0 6px 6px 0}
+blockquote p:last-child{margin:0}
+code{font-family:var(--mono);font-size:.88em;background:var(--accent-soft);padding:.05em .35em;border-radius:4px}
+hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bar{font-family:var(--mono);font-size:.82em;white-space:nowrap;background:var(--accent-soft);color:var(--accent);padding:.08em .4em;border-radius:4px;font-variant-numeric:tabular-nums}
+.tbl{overflow-x:auto;margin-block:.6rem 1.2rem;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:520px}
+th,td{padding:.55rem .7rem;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-variant-numeric:tabular-nums}
+figure.excerpt{margin:1.2rem 0 1.6rem;background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .6rem .2rem;overflow-x:auto}
+figure.excerpt svg{width:100%;height:auto;display:block;min-width:min(100%,520px)}
+figure.excerpt figcaption{font-family:var(--mono);font-size:.78rem;color:#4b5563;padding:.45rem .3rem .4rem;border-top:1px solid #e5e7eb;margin-top:.4rem}
+figure.excerpt figcaption b{font-weight:500;color:#1E4D7B}
+.callout{border:1px solid var(--line);border-radius:8px;padding:.9rem 1.1rem;background:var(--surface);margin:1rem 0}
+.callout.mark{border-color:var(--mark);background:var(--mark-soft)}
+.callout.ok{border-color:var(--ok);background:var(--ok-soft)}
+.timeline{margin:1rem 0 1.4rem}
+.timeline .ruler{position:relative;height:1.3rem;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.timeline .ruler span{position:absolute;transform:translateX(-50%)}
+.timeline .track{display:flex;height:2.6rem;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.timeline .blk{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.72rem;padding:0 .3rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;background:var(--accent-soft);color:var(--ink);border-inline-end:1px solid var(--surface)}
+.timeline .blk.pause{background:var(--bg);color:var(--muted)} .timeline .blk.figaro{background:var(--accent-soft)} .timeline .blk.flute{background:var(--ok-soft)} .timeline .blk.filage{background:var(--mark-soft)}
+
+@page{size:A4;margin:14mm 15mm}
+.sheet{max-width:820px;margin:0 auto;padding-inline:16px;padding-block:1.6rem 3rem}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 1rem;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:.6rem;margin-bottom:1rem}
+.head .prog{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(1.8rem,4vw,2.5rem)}
+.aud{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-bottom:1.2rem}
+.sheet h2{font-size:1.45rem;margin-block:1.5rem .5rem;padding-top:.6rem}
+.sheet h3{font-size:1.15rem}
+.back{font-family:var(--mono);font-size:.76rem;margin-bottom:1rem;display:inline-block}
+.sheet .legend{font-family:var(--mono);font-size:.76rem;color:var(--muted);border:1px dashed var(--line);padding:.5rem .7rem;border-radius:6px;margin:.6rem 0 1rem}
+footer{margin-top:2rem;font-family:var(--mono);font-size:.72rem;color:var(--muted);border-top:1px solid var(--line);padding-top:.5rem}
+@media print{ body{background:#fff;color:#000;font-size:10.5pt;line-height:1.4} .sheet{max-width:none;padding:0} .back{display:none} figure.excerpt{break-inside:avoid;border-color:#bbb} .tbl{border:0;break-inside:avoid} table{min-width:0;font-size:9.5pt} th{background:#f2f2f2;color:#333} .bar{background:#eee;color:#000} blockquote{background:#f4f4f4;border-color:#333} .callout.mark{background:#f7eceb} h2{break-after:avoid} h3{break-after:avoid} ul,ol{break-inside:auto} li{break-inside:avoid} }
+</style></head>
+<body><div class="sheet">
+<a class="back" href="../index.html">← Retour au guide</a>
+<div class="head"><h1>Justesse — méthode et accords à travailler</h1><div class="prog">Mozart — Ouvertures des Noces de Figaro (K. 492) et de La Flûte enchantée (K. 620)</div></div>
+<div class="aud">Destinataires : Tout l’orchestre, en particulier les chefs de pupitre</div>
+<h2>L’ordre d’accord (9h00)</h2>
+<ol>
+<li>Le la du premier hautbois.</li>
+<li>Les vents, puis les cuivres.</li>
+<li>Les contrebasses, les violoncelles, les altos, les violons.</li>
+<li>Un accord parfait de ré majeur, puis de mi♭ majeur, tenu dix secondes chacun, basses d’abord.</li>
+</ol>
+<h2>Les trois règles</h2>
+<ul>
+<li><strong>La quinte est pure</strong>, la tierce majeure se place en dessous de celle du piano (≈ 14 cents plus bas), la tierce mineure au-dessus (≈ 16 cents plus haut).</li>
+<li><strong>La basse d’abord</strong> : personne ne place sa note avant d’avoir entendu les contrebasses et les violoncelles.</li>
+<li><strong>Sensible</strong> : haute quand elle monte vers la tonique dans une mélodie ; basse quand elle est la tierce d’un accord de dominante tenu.</li>
+</ul>
+<h2>La méthode « accord par accord »</h2>
+<p>Arrêt sur l’accord, tenu : contrebasses seules → violoncelles → voix du milieu → les tierces en dernier. Dix secondes par accord, trois accords au maximum d’affilée.</p>
+<h2>Figaro</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Mesures</th>
+<th>Ce qu’on travaille</th>
+<th>Qui a la tierce / la sensible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–7, 139–145</td>
+<td>Unisson : une seule hauteur, référence = violoncelles ; do♯, sol♯, la♯, ré♯ serrés</td>
+<td>—</td>
+</tr>
+<tr>
+<td>85–95, 198–209</td>
+<td>Tenues des vents sur la (dominante) puis ses voisins ; pédale des violons = référence</td>
+<td>Tierce do♯ (vents) : basse</td>
+</tr>
+<tr>
+<td>122–133</td>
+<td>Accords fp alternés</td>
+<td>Vérifier chaque accord en chorale</td>
+</tr>
+<tr>
+<td>290–294</td>
+<td>Accords finaux, ré majeur</td>
+<td>Fa♯ : bas ; la : pur</td>
+</tr>
+</tbody>
+</table></div>
+<h2>La Flûte enchantée</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Mesures</th>
+<th>Ce qu’on travaille</th>
+<th>Qui a la tierce</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mi♭ majeur</td>
+<td>Sol dans la double corde des violons : bas, <strong>jamais à vide</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Do mineur</td>
+<td>Mi♭ (tierce mineure) : légèrement haut</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mi♭ majeur, sol à la basse</td>
+<td>Altos, violoncelles, contrebasses : sol très légèrement bas, stable</td>
+</tr>
+<tr>
+<td>4–15</td>
+<td>Harmonies chromatiques en rythme pointé</td>
+<td>En chorale, sans rythme, puis en rythme lent</td>
+</tr>
+<tr>
+<td>20–21</td>
+<td>Ligne chromatique des seconds violons</td>
+<td>Demi-tons serrés et réguliers</td>
+</tr>
+<tr>
+<td>97–102</td>
+<td>Si♭ majeur, vents et cuivres seuls</td>
+<td>Ré : bas ; fa : pur ; trombones sous les hautbois</td>
+</tr>
+<tr>
+<td>219–226</td>
+<td>Accords finaux, mi♭ majeur</td>
+<td>Sol : bas</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Deux pièges d’instrument</h2>
+<ul>
+<li>Les anches (hautbois, basson) montent en pp ; les flûtes descendent en pp et montent en ff.</li>
+<li>Les cordes à vide sont justes comme fondamentale ou quinte, pas comme tierce.</li>
+</ul>
+<footer>Répétition du matin, 9h00–13h00 · Direction depuis le premier violon : Nina Ramousse · Numéros de mesure conformes à la partition (NMA / éditions de référence).</footer>
+</div></body></html>
