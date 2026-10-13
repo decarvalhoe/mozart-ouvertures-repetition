@@ -56,7 +56,6 @@ md = r"""
 | Schubert, *Cinq danses allemandes* D. 90 | 8 min, ou une sélection | ● | Charmant, sans difficulté ; bon « respiration » entre deux pièces lentes |
 | Tchaïkovski, *Sérénade pour cordes* op. 48 : Valse | 4 min | ●● | Le tube ; demande une section de violons homogène |
 | Tchaïkovski, *Andante cantabile* (version pour cordes) | 7 min | ●● | Sourdines, longues phrases |
-| Puccini, *Crisantemi* | 6 min | ●● | Chromatique, expressif ; justesse |
 | Grieg, *Peer Gynt* : *La mort d’Åse* | 4 min 30 | ● | Cordes seules ; crescendo-decrescendo à construire |
 
 ### Petit orchestre (bois par deux, deux cors, cordes, harpe ou piano)
