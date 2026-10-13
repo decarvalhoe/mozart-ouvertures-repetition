@@ -226,6 +226,24 @@ for hd in data["handouts"]:
     (SITE / "fiches" / f"{hd['id']}.html").write_text(page, encoding="utf-8")
     fiches_index.append(hd)
 
+# ---------- programmes (page for Nina, same A4 layout) ----------
+PROG_CARD = ""
+if data.get("programmes"):
+    pg = data["programmes"]
+    body = convert(pg["markdown"])
+    page = f"""<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{html.escape(pg['title'])}</title>{FONTS}<style>{FICHE_CSS}</style></head>
+<body><div class="sheet">
+<a class="back" href="index.html">← Retour au guide</a>
+<div class="head"><h1>{html.escape(pg['title'])}</h1><div class="prog">Pour Nina Ramousse · direction depuis le premier violon</div></div>
+<div class="aud">{html.escape(pg['subtitle'])}</div>
+{body}
+<footer>Durées et effectifs indicatifs ; vérifier chaque édition sur IMSLP avant d’imprimer le matériel.</footer>
+</div></body></html>"""
+    (SITE / "programmes.html").write_text(page, encoding="utf-8")
+    PROG_CARD = f'<section id="programmes"><div class="eyebrow">Concert</div><div class="fiches"><a href="programmes.html"><div class="t">{html.escape(pg["title"])}</div><div class="a">{html.escape(pg["subtitle"])}</div></a></div></section>'
+
 # ---------- index ----------
 guide_html = convert(data["guide_markdown"])
 guide_html = re.sub(r"^<h1>.*?</h1>\s*", "", guide_html, count=1, flags=re.S)
@@ -266,6 +284,7 @@ index = f"""<title>Guide de répétition Mozart</title>
 <div class="fiches">{fiches_cards}</div>
 {PDF_LINKS}
 </section>
+{PROG_CARD}
 {guide_html}
 <h2 id="methode"><span class="letter">∞</span>Méthode et vérification</h2>
 {method}

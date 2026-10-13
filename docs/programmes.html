@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Programmes de concert</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>
+/* Layout: a conductor's-score margin — rehearsal-letter rail on the left, 68ch reading column, bar numbers as mono chips. */
+:root{
+  --bg:#F5F6F8; --surface:#FFFFFF; --ink:#16181D; --muted:#5B6270; --line:#D9DDE3;
+  --accent:#1E4D7B; --accent-soft:#E4EDF6; --mark:#A3302A; --mark-soft:#F6E6E4; --ok:#2E6B3F; --ok-soft:#E3EFE6;
+  --display:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",Consolas,"Courier New",monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#15181D; --surface:#1C2027; --ink:#E8EAEE; --muted:#9AA3B0; --line:#2F353E;
+  --accent:#8FBCEB; --accent-soft:#1F2E40; --mark:#E8857A; --mark-soft:#3A2321; --ok:#8CCB9B; --ok-soft:#1F3326; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#15181D; --surface:#1C2027; --ink:#E8EAEE; --muted:#9AA3B0; --line:#2F353E;
+  --accent:#8FBCEB; --accent-soft:#1F2E40; --mark:#E8857A; --mark-soft:#3A2321; --ok:#8CCB9B; --ok-soft:#1F3326; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;margin:0}
+a{color:var(--accent)} a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:600}
+h2{font-size:clamp(1.65rem,3.2vw,2.3rem);font-weight:600;margin-block:2.6rem .9rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+h3{font-size:1.4rem;font-weight:600;margin-block:1.8rem .5rem}
+h4{font-size:1.12rem;font-weight:700;font-family:var(--body);margin-block:1.3rem .35rem}
+p{margin-block:0 .9rem} ul,ol{margin-block:0 .9rem;padding-inline-start:1.4rem} li{margin-block:.22rem}
+li>p{margin-block:0 .3rem}
+strong{font-weight:600}
+blockquote{margin:1rem 0;padding:.6rem 1rem;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:0 6px 6px 0}
+blockquote p:last-child{margin:0}
+code{font-family:var(--mono);font-size:.88em;background:var(--accent-soft);padding:.05em .35em;border-radius:4px}
+hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bar{font-family:var(--mono);font-size:.82em;white-space:nowrap;background:var(--accent-soft);color:var(--accent);padding:.08em .4em;border-radius:4px;font-variant-numeric:tabular-nums}
+.tbl{overflow-x:auto;margin-block:.6rem 1.2rem;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:520px}
+th,td{padding:.55rem .7rem;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-variant-numeric:tabular-nums}
+figure.excerpt{margin:1.2rem 0 1.6rem;background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .6rem .2rem;overflow-x:auto}
+figure.excerpt svg{width:100%;height:auto;display:block;min-width:min(100%,520px)}
+figure.excerpt figcaption{font-family:var(--mono);font-size:.78rem;color:#4b5563;padding:.45rem .3rem .4rem;border-top:1px solid #e5e7eb;margin-top:.4rem}
+figure.excerpt figcaption b{font-weight:500;color:#1E4D7B}
+.callout{border:1px solid var(--line);border-radius:8px;padding:.9rem 1.1rem;background:var(--surface);margin:1rem 0}
+.callout.mark{border-color:var(--mark);background:var(--mark-soft)}
+.callout.ok{border-color:var(--ok);background:var(--ok-soft)}
+.timeline{margin:1rem 0 1.4rem}
+.timeline .ruler{position:relative;height:1.3rem;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.timeline .ruler span{position:absolute;transform:translateX(-50%)}
+.timeline .track{display:flex;height:2.6rem;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.timeline .blk{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.72rem;padding:0 .3rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;background:var(--accent-soft);color:var(--ink);border-inline-end:1px solid var(--surface)}
+.timeline .blk.pause{background:var(--bg);color:var(--muted)} .timeline .blk.figaro{background:var(--accent-soft)} .timeline .blk.flute{background:var(--ok-soft)} .timeline .blk.filage{background:var(--mark-soft)}
+
+@page{size:A4;margin:14mm 15mm}
+.sheet{max-width:820px;margin:0 auto;padding-inline:16px;padding-block:1.6rem 3rem}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 1rem;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:.6rem;margin-bottom:1rem}
+.head .prog{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(1.8rem,4vw,2.5rem)}
+.aud{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-bottom:1.2rem}
+.sheet h2{font-size:1.45rem;margin-block:1.5rem .5rem;padding-top:.6rem}
+.sheet h3{font-size:1.15rem}
+.back{font-family:var(--mono);font-size:.76rem;margin-bottom:1rem;display:inline-block}
+.sheet .legend{font-family:var(--mono);font-size:.76rem;color:var(--muted);border:1px dashed var(--line);padding:.5rem .7rem;border-radius:6px;margin:.6rem 0 1rem}
+footer{margin-top:2rem;font-family:var(--mono);font-size:.72rem;color:var(--muted);border-top:1px solid var(--line);padding-top:.5rem}
+@media print{ body{background:#fff;color:#000;font-size:10.5pt;line-height:1.4} .sheet{max-width:none;padding:0} .back{display:none} figure.excerpt{break-inside:avoid;border-color:#bbb} .tbl{border:0;break-inside:avoid} table{min-width:0;font-size:9.5pt} th{background:#f2f2f2;color:#333} .bar{background:#eee;color:#000} blockquote{background:#f4f4f4;border-color:#333} .callout.mark{background:#f7eceb} h2{break-after:avoid} h3{break-after:avoid} ul,ol{break-inside:auto} li{break-inside:avoid} }
+</style></head>
+<body><div class="sheet">
+<a class="back" href="index.html">← Retour au guide</a>
+<div class="head"><h1>Programmes de concert</h1><div class="prog">Pour Nina Ramousse · direction depuis le premier violon</div></div>
+<div class="aud">Une demi-heure, orchestre réduit, sans baroque : cinq combinaisons autour de la Pavane de Ravel et de Tico-Tico</div>
+<h2>Le cahier des charges</h2>
+<ul>
+<li><strong>Durée</strong> : 30 minutes de musique (28 à 32 min), en quatre ou cinq œuvres courtes.</li>
+<li><strong>Effectif de base</strong> (« orchestre Mozart ») : 2 flûtes, 2 hautbois, 2 clarinettes, 2 bassons, 2 cors, harpe (ou piano), cordes. Tout ce qui suit tient dans cet effectif ; les rares ajouts (trompettes, timbales, percussion) sont signalés et ne concernent que des pièces optionnelles.</li>
+<li><strong>Niveau</strong> : accessible à un orchestre d’étudiants, sans chef, dirigé depuis le premier violon. Les niveaux indiqués vont de ● (facile) à ●●● (exigeant). Aucune œuvre ●●● n’est retenue.</li>
+<li><strong>Matériel</strong> : toutes les œuvres sont dans le domaine public dans l’Union européenne et leur conducteur et leurs parties sont téléchargeables sur IMSLP (vérifier qu’il s’agit bien de l’édition d’orchestre, et non d’une réduction pour piano).</li>
+<li><strong>Pas de baroque</strong> : ni Bach, ni Haendel, ni Vivaldi, et pas non plus de suites « dans le style ancien » (la <em>Suite Holberg</em> de Grieg, les <em>Antiche danze</em> de Respighi sont écartées des programmes pour cette raison).</li>
+<li><strong>Deux pièces demandées</strong> : Ravel, <em>Pavane pour une infante défunte</em> (version d’orchestre de 1910) et Zequinha de Abreu, <em>Tico-Tico no Fubá</em> (version orchestre).</li>
+</ul>
+<h2>La Pavane de Ravel, pièce fixe</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Durée</td>
+<td>≈ 6 min 30</td>
+</tr>
+<tr>
+<td>Effectif</td>
+<td>2 flûtes, 1 hautbois, 2 clarinettes, 2 bassons, 2 cors, harpe, cordes</td>
+</tr>
+<tr>
+<td>Niveau</td>
+<td>●● : lent (noire ≈ 54), mais exposé ; le thème initial est au <strong>cor solo</strong> (douze mesures seul avec les cordes en pizzicato), puis repris par les bois</td>
+</tr>
+<tr>
+<td>Direction depuis le violon</td>
+<td>Oui. Le cor solo donne le ton ; convenir que Nina donne la levée et que le corniste respire avec elle. Les cordes ne doivent pas vibrer en continu : son droit, archet lent</td>
+</tr>
+<tr>
+<td>Harpe</td>
+<td>Indispensable à la couleur, mais la partie se joue au piano sans dommage (c’est courant)</td>
+</tr>
+<tr>
+<td>Matériel</td>
+<td>IMSLP, édition Eschig (1910), domaine public</td>
+</tr>
+<tr>
+<td>Pièges</td>
+<td>La justesse des bois dans les enchaînements chromatiques ; les pizzicati des cordes (ensemble et sonorité) ; ne pas ralentir davantage que l’écrit</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Tico-Tico no Fubá, la pièce qui ferme le concert</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Œuvre</td>
+<td>Zequinha de Abreu (1880–1935), <em>Tico-Tico no Fubá</em>, choro, 1917. Domaine public dans l’Union européenne depuis 2006 (l’original pour piano est sur IMSLP)</td>
+</tr>
+<tr>
+<td>Durée</td>
+<td>≈ 3 min (2 min 30 à 3 min 30 selon les reprises)</td>
+</tr>
+<tr>
+<td>Niveau</td>
+<td>●● : tempo vif (noire ≈ 120–130 à 2/4), doubles croches continues à la mélodie ; on la répartit entre bois et violons pour que personne ne la tienne trois minutes</td>
+</tr>
+<tr>
+<td>Direction depuis le violon</td>
+<td>Oui, à condition d’un tempo fixé d’avance et tenu par les basses et la percussion ; pas de rubato</td>
+</tr>
+<tr>
+<td>Effectif</td>
+<td>Effectif de base + percussion légère (maracas ou pandeiro, caisse claire avec balais) ; piano bienvenu</td>
+</tr>
+<tr>
+<td><strong>Matériel, trois options</strong></td>
+<td><strong>1.</strong> Arrangement pour orchestre à cordes de James Kazik (Hal Leonard, 2023, niveau intermédiaire, avec piano et percussion facultatifs) : le plus simple à obtenir, les vents doublent ou se taisent. <strong>2.</strong> Arrangement pour orchestre symphonique de Francesco Traversi (Sheet Music Direct / ArrangeMe) : à examiner avant achat, effectif plus large. <strong>3.</strong> Arrangement maison pour l’effectif de base, réalisé à partir de la partition de piano libre de droits : mélodie aux bois puis aux violons, accompagnement de choro aux cordes graves et à la percussion. Sur IMSLP, les arrangements existants (trios d’anches, duos de cuivres, violon et piano) sont sous licence Creative Commons, mais aucun n’est pour orchestre</td>
+</tr>
+<tr>
+<td>Place dans le concert</td>
+<td>En finale ou en bis : après elle, on ne peut plus rien jouer</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Catalogue des œuvres compatibles</h2>
+<h3>Cordes seules (toute la section joue, les vents se reposent)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Œuvre</th>
+<th>Durée</th>
+<th>Niveau</th>
+<th>Remarques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bizet, <em>L’Arlésienne</em>, Adagietto</td>
+<td>3 min</td>
+<td>●</td>
+<td>Sourdines, pp, phrasé long. Idéal en ouverture douce ou avant Ravel</td>
+</tr>
+<tr>
+<td>Massenet, <em>Le dernier sommeil de la Vierge</em></td>
+<td>4 min</td>
+<td>●</td>
+<td>Même famille que l’Adagietto ; très simple, très beau</td>
+</tr>
+<tr>
+<td>Grieg, <em>Deux mélodies élégiaques</em> op. 34 : <em>Le dernier printemps</em></td>
+<td>5 min</td>
+<td>●</td>
+<td>La pièce de cordes la plus sûre du répertoire</td>
+</tr>
+<tr>
+<td>Grieg, <em>Deux mélodies élégiaques</em> op. 34 : <em>Blessure du cœur</em></td>
+<td>4 min</td>
+<td>●</td>
+<td>Fait la paire avec la précédente (9 min à deux)</td>
+</tr>
+<tr>
+<td>Grieg, <em>Suite Holberg</em> op. 40</td>
+<td>20 min, ou par mouvements</td>
+<td>●●</td>
+<td>Mentionnée pour mémoire : écrite « dans le style ancien » (prélude, sarabande, gavotte, air, rigaudon), elle sonne baroque et n’entre dans aucun des programmes ci-dessous</td>
+</tr>
+<tr>
+<td>Holst, <em>St Paul’s Suite</em></td>
+<td>12 min</td>
+<td>●●</td>
+<td>Écrite pour un orchestre d’école ; Jig, Ostinato, Intermezzo (solo de violon), Finale sur <em>Greensleeves</em></td>
+</tr>
+<tr>
+<td>Holst, <em>Brook Green Suite</em></td>
+<td>7 min</td>
+<td>●</td>
+<td>Prelude, Air, Dance ; encore plus simple que la précédente</td>
+</tr>
+<tr>
+<td>Elgar, <em>Serenade pour cordes</em> op. 20</td>
+<td>12 min</td>
+<td>●●</td>
+<td>Trois mouvements ; le Larghetto (6 min) peut être donné seul</td>
+</tr>
+<tr>
+<td>Mozart, Divertimento K. 136</td>
+<td>13 min</td>
+<td>●●</td>
+<td>Allegro 6 min, Andante 4 min 30, Presto 3 min ; tempo vif à tenir</td>
+</tr>
+<tr>
+<td>Schubert, <em>Cinq danses allemandes</em> D. 90</td>
+<td>8 min, ou une sélection</td>
+<td>●</td>
+<td>Charmant, sans difficulté ; bon « respiration » entre deux pièces lentes</td>
+</tr>
+<tr>
+<td>Tchaïkovski, <em>Sérénade pour cordes</em> op. 48 : Valse</td>
+<td>4 min</td>
+<td>●●</td>
+<td>Le tube ; demande une section de violons homogène</td>
+</tr>
+<tr>
+<td>Tchaïkovski, <em>Andante cantabile</em> (version pour cordes)</td>
+<td>7 min</td>
+<td>●●</td>
+<td>Sourdines, longues phrases</td>
+</tr>
+<tr>
+<td>Puccini, <em>Crisantemi</em></td>
+<td>6 min</td>
+<td>●●</td>
+<td>Chromatique, expressif ; justesse</td>
+</tr>
+<tr>
+<td>Grieg, <em>Peer Gynt</em> : <em>La mort d’Åse</em></td>
+<td>4 min 30</td>
+<td>●</td>
+<td>Cordes seules ; crescendo-decrescendo à construire</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Petit orchestre (bois par deux, deux cors, cordes, harpe ou piano)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Œuvre</th>
+<th>Durée</th>
+<th>Niveau</th>
+<th>Effectif exact</th>
+<th>Remarques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fauré, <em>Pavane</em> op. 50</td>
+<td>6 min</td>
+<td>●●</td>
+<td>2.2.2.2 – 2 cors – cordes (chœur ad lib., à omettre)</td>
+<td>Le pendant naturel de Ravel : deux pavanes, deux générations</td>
+</tr>
+<tr>
+<td>Fauré, <em>Sicilienne</em> (<em>Pelléas et Mélisande</em>)</td>
+<td>4 min</td>
+<td>●●</td>
+<td>Flûte solo, harpe, cordes, quelques bois</td>
+<td>Solo de flûte exposé</td>
+</tr>
+<tr>
+<td>Fauré, <em>Masques et bergamasques</em> : Menuet, Gavotte, Pastorale</td>
+<td>3 + 3 + 3 min 30</td>
+<td>●●</td>
+<td>2.2.2.2 – 2 cors – harpe – cordes (l’Ouverture ajoute 2 trompettes et timbales)</td>
+<td>Sans l’Ouverture, tout tient dans l’effectif de base</td>
+</tr>
+<tr>
+<td>Massenet, <em>Méditation</em> de <em>Thaïs</em></td>
+<td>5 min 30</td>
+<td>●● (solo ●●●)</td>
+<td>Petit orchestre, harpe, cordes</td>
+<td><strong>Nina en soliste</strong>, debout, en dirigeant ; l’accompagnement est simple</td>
+</tr>
+<tr>
+<td>Fauré, <em>Berceuse</em> op. 16 (violon et orchestre)</td>
+<td>4 min</td>
+<td>●●</td>
+<td>Petit orchestre, cordes</td>
+<td>Même idée, plus intime</td>
+</tr>
+<tr>
+<td>Elgar, <em>Chanson de matin</em> / <em>Chanson de nuit</em></td>
+<td>3 + 4 min</td>
+<td>●</td>
+<td>2 flûtes, hautbois, 2 clarinettes, basson, 2 cors, harpe, cordes</td>
+<td>Faciles, parfaits en bis ou en ouverture</td>
+</tr>
+<tr>
+<td>Elgar, <em>Salut d’amour</em></td>
+<td>3 min</td>
+<td>●</td>
+<td>Petit orchestre, cordes</td>
+<td>Bis tout trouvé</td>
+</tr>
+<tr>
+<td>Delius, <em>Au premier coucou du printemps</em></td>
+<td>6 min 30</td>
+<td>●●</td>
+<td>2 flûtes, hautbois, 2 clarinettes, 2 bassons, 2 cors, cordes</td>
+<td>Couleur proche de Ravel ; tempo très lent à tenir</td>
+</tr>
+<tr>
+<td>Bartók, <em>Danses populaires roumaines</em> (version pour petit orchestre, 1917)</td>
+<td>6 min</td>
+<td>●●</td>
+<td>2 flûtes (piccolo), 2 clarinettes, 2 bassons, 2 cors, cordes</td>
+<td>Domaine public dans l’UE depuis 2016 ; six danses, changements de tempo nets : excellent pour un orchestre dirigé du violon</td>
+</tr>
+<tr>
+<td>Bizet, <em>Jeux d’enfants</em> : Berceuse, Duo</td>
+<td>3 + 3 min</td>
+<td>●</td>
+<td>Petit orchestre</td>
+<td>Marche et Galop ajoutent trompettes, timbales et percussion (●●)</td>
+</tr>
+<tr>
+<td>Grieg, <em>Peer Gynt</em> : <em>La danse d’Anitra</em></td>
+<td>3 min 30</td>
+<td>●●</td>
+<td>Cordes et triangle</td>
+<td>Pizzicati, légèreté</td>
+</tr>
+<tr>
+<td>Abreu, <em>Tico-Tico no Fubá</em></td>
+<td>3 min</td>
+<td>●●</td>
+<td>Effectif de base, percussion légère, piano</td>
+<td>Voir ci-dessus ; en finale ou en bis</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Vents seuls (les cordes se reposent, les vents ont leur moment)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Œuvre</th>
+<th>Durée</th>
+<th>Niveau</th>
+<th>Effectif</th>
+<th>Remarques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gounod, <em>Petite symphonie</em> : Andante cantabile, Scherzo</td>
+<td>5 + 4 min</td>
+<td>●●</td>
+<td>Flûte, 2 hautbois, 2 clarinettes, 2 cors, 2 bassons</td>
+<td>Neuf vents ; se dirige depuis la flûte ou le premier hautbois</td>
+</tr>
+<tr>
+<td>Mozart, Divertimento K. 270 (un mouvement)</td>
+<td>3 à 4 min</td>
+<td>●●</td>
+<td>2 hautbois, 2 cors, 2 bassons</td>
+<td>Six vents</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Cinq programmes prêts à l’emploi</h2>
+<p>Chaque programme dure 28 à 32 minutes, alterne les formations (pour que chacun joue et se repose), place la Pavane de Ravel là où elle porte le mieux, et finit sur une pièce qui « ferme » le concert : <em>Tico-Tico</em> dans quatre programmes sur cinq.</p>
+<h3>Programme 1 — « Deux pavanes » (musique française, 1872–1910)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ordre</th>
+<th>Œuvre</th>
+<th>Formation</th>
+<th>Durée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Fauré, <em>Pavane</em> op. 50</td>
+<td>Petit orchestre</td>
+<td>6 min</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bizet, <em>L’Arlésienne</em>, Adagietto</td>
+<td>Cordes</td>
+<td>3 min</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Massenet, <em>Méditation</em> de <em>Thaïs</em> — Nina en soliste</td>
+<td>Petit orchestre</td>
+<td>5 min 30</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fauré, <em>Masques et bergamasques</em> : Menuet, Gavotte</td>
+<td>Petit orchestre</td>
+<td>6 min</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Ravel, <em>Pavane pour une infante défunte</em></td>
+<td>Petit orchestre</td>
+<td>6 min 30</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Abreu, <em>Tico-Tico no Fubá</em></td>
+<td>Petit orchestre et percussion</td>
+<td>3 min</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>≈ 30 min</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Un seul effectif pour tout le concert, harpe ou piano pour Fauré, Massenet et Ravel. Le plus cohérent et le plus simple à organiser ; <em>Tico-Tico</em> fait sortir du rêve français en trois minutes.</p>
+<h3>Programme 2 — « Suites pour cordes » (le choix le plus sûr)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ordre</th>
+<th>Œuvre</th>
+<th>Formation</th>
+<th>Durée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Holst, <em>St Paul’s Suite</em></td>
+<td>Cordes</td>
+<td>12 min</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ravel, <em>Pavane pour une infante défunte</em></td>
+<td>Petit orchestre</td>
+<td>6 min 30</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Elgar, <em>Serenade pour cordes</em> op. 20</td>
+<td>Cordes</td>
+<td>12 min</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Bis : Abreu, <em>Tico-Tico no Fubá</em></td>
+<td>Petit orchestre et percussion</td>
+<td>3 min</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>≈ 33 min 30, dont 3 min de bis</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Les vents ne jouent que la Pavane, placée au centre, et le bis. Si les vents doivent jouer davantage, remplacer la <em>Serenade</em> d’Elgar par Fauré, <em>Pavane</em> + Delius, <em>Au premier coucou du printemps</em> (12 min 30).</p>
+<h3>Programme 3 — « Nord et lumière » (Grieg, Delius, Ravel)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ordre</th>
+<th>Œuvre</th>
+<th>Formation</th>
+<th>Durée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Grieg, <em>Deux mélodies élégiaques</em> op. 34 : <em>Blessure du cœur</em>, <em>Le dernier printemps</em></td>
+<td>Cordes</td>
+<td>9 min</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Delius, <em>Au premier coucou du printemps</em></td>
+<td>Petit orchestre</td>
+<td>6 min 30</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Grieg, <em>Peer Gynt</em> : <em>La mort d’Åse</em></td>
+<td>Cordes</td>
+<td>4 min 30</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ravel, <em>Pavane pour une infante défunte</em></td>
+<td>Petit orchestre</td>
+<td>6 min 30</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Grieg, <em>Peer Gynt</em> : <em>La danse d’Anitra</em></td>
+<td>Cordes et triangle</td>
+<td>3 min 30</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>≈ 30 min</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Programme de couleur : printemps, lumière du Nord, pavane. Le seul des cinq sans <em>Tico-Tico</em>, pour garder l’unité de ton ; la <em>Danse d’Anitra</em> fait une fin légère. Si Nina tient à <em>Tico-Tico</em>, le donner en bis : le contraste fonctionne.</p>
+<h3>Programme 4 — « Danses et jeux » (jeune public, familles)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ordre</th>
+<th>Œuvre</th>
+<th>Formation</th>
+<th>Durée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Bizet, <em>Jeux d’enfants</em> : Berceuse, Duo</td>
+<td>Petit orchestre</td>
+<td>6 min</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tchaïkovski, <em>Sérénade pour cordes</em> : Valse</td>
+<td>Cordes</td>
+<td>4 min</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ravel, <em>Pavane pour une infante défunte</em></td>
+<td>Petit orchestre</td>
+<td>6 min 30</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Grieg, <em>La danse d’Anitra</em></td>
+<td>Cordes et triangle</td>
+<td>3 min 30</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bartók, <em>Danses populaires roumaines</em></td>
+<td>Petit orchestre</td>
+<td>6 min</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Abreu, <em>Tico-Tico no Fubá</em></td>
+<td>Petit orchestre et percussion</td>
+<td>3 min</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>≈ 29 min</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Six pièces courtes, rythme de concert vif ; tout tient dans l’effectif de base, plus un triangle et une percussion légère. Si l’orchestre dispose de trompettes et de timbales, ouvrir par la Marche de <em>Jeux d’enfants</em> (2 min). Les danses de Bartók puis <em>Tico-Tico</em> enchaînées font une fin irrésistible pour un jeune public.</p>
+<h3>Programme 5 — « Nina soliste, et chacun son tour »</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Ordre</th>
+<th>Œuvre</th>
+<th>Formation</th>
+<th>Durée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mozart, Divertimento K. 136 : Allegro</td>
+<td>Cordes</td>
+<td>6 min</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gounod, <em>Petite symphonie</em> : Andante cantabile, Scherzo</td>
+<td>Neuf vents</td>
+<td>9 min</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Massenet, <em>Méditation</em> de <em>Thaïs</em> — Nina en soliste</td>
+<td>Petit orchestre</td>
+<td>5 min 30</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ravel, <em>Pavane pour une infante défunte</em></td>
+<td>Petit orchestre</td>
+<td>6 min 30</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Abreu, <em>Tico-Tico no Fubá</em></td>
+<td>Petit orchestre et percussion</td>
+<td>3 min</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>≈ 30 min</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Chaque groupe a sa pièce : les cordes seules, les vents seuls, puis tout le monde avec la soliste, et <em>Tico-Tico</em> pour finir ensemble. Le plus valorisant pour l’orchestre, le plus exigeant pour Nina (un solo et la direction). Pour un second solo, ajouter Fauré, <em>Berceuse</em> op. 16 (4 min) avant la <em>Méditation</em>.</p>
+<h2>Comment choisir</h2>
+<ul>
+<li><strong>Première expérience, peu de temps de répétition</strong> : programme 2 (trois œuvres, deux formations) ou programme 1 (un seul effectif).</li>
+<li><strong>Orchestre à vents solide</strong> : programme 1 ou 5.</li>
+<li><strong>Vents fragiles ou incomplets</strong> : programme 2 ; la Pavane de Ravel reste jouable avec hautbois, clarinette, basson et cor à un (prévoir alors le piano pour la harpe et vérifier les doublures).</li>
+<li><strong>Public familial, concert scolaire</strong> : programme 4.</li>
+<li><strong>Thème « couleurs », concert du soir</strong> : programme 3.</li>
+</ul>
+<p>Dans tous les cas, l’ordre suit la même logique : ouvrir par une pièce sûre, placer la Pavane de Ravel au centre ou en avant-dernière position, finir par une pièce qui tient toute seule (<em>Tico-Tico</em>, Bartók, la Valse, la <em>Danse d’Anitra</em>), et garder un bis court de deux ou trois minutes (Elgar, <em>Salut d’amour</em> ; Bizet, Adagietto ; Schubert, une danse ; ou <em>Tico-Tico</em> repris).</p>
+<h2>Matériel et pratique</h2>
+<ul>
+<li><strong>IMSLP</strong> : télécharger conducteur et parties d’orchestre, puis vérifier le nombre de parties de cordes (en général 4-4-3-3-2 à l’achat ; en téléchargement, imprimer selon l’effectif).</li>
+<li><strong><em>Tico-Tico</em></strong> : décider tôt entre l’arrangement Kazik (cordes, à commander), l’arrangement Traversi (orchestre, à examiner) et l’arrangement maison ; prévoir la percussion (maracas ou pandeiro, caisse claire) et un pianiste.</li>
+<li><strong>Harpe</strong> : Ravel, Fauré (<em>Pavane</em> : pas de harpe ; <em>Sicilienne</em> et <em>Masques</em> : harpe), Massenet, Elgar. Un piano remplace la harpe partout ; prévoir le pianiste aux répétitions.</li>
+<li><strong>Numéros de mesure et lettres</strong> : vérifier qu’ils sont imprimés dans les parties avant la première répétition (certaines éditions anciennes n’en ont pas : les ajouter au crayon avant de distribuer).</li>
+<li><strong>Temps de répétition</strong> : compter une répétition de trois heures par tranche de dix minutes de musique nouvelle pour un orchestre d’étudiants, soit trois répétitions pour un programme de trente minutes, plus une générale.</li>
+<li><strong>Direction</strong> : pour les pièces où Nina est soliste, confier la levée au deuxième chef d’attaque (premier violon, deuxième pupitre), convenu à l’avance ; Nina reprend la direction dès qu’elle rejoint le tutti.</li>
+</ul>
+<footer>Durées et effectifs indicatifs ; vérifier chaque édition sur IMSLP avant d’imprimer le matériel.</footer>
+</div></body></html>

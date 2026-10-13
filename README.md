@@ -6,7 +6,7 @@ Guide de répétition préparé pour Nina Ramousse, qui dirige depuis le premier
 
 ## Contenu
 
-- `docs/` — le site publié (GitHub Pages) : le guide complet et les sept fiches à distribuer aux musiciens (plan de la répétition, cordes *Figaro*, cordes *Flûte*, vents–cuivres–timbales, style classique, justesse, écoutes), plus les versions PDF A4 dans `docs/pdf/`.
+- `docs/` — le site publié (GitHub Pages) : le guide complet et les sept fiches à distribuer aux musiciens (plan de la répétition, cordes *Figaro*, cordes *Flûte*, vents–cuivres–timbales, style classique, justesse, écoutes), plus la page « Programmes de concert » (cinq combinaisons d’une demi-heure pour orchestre réduit autour de la Pavane de Ravel et de Tico-Tico) et les versions PDF A4 dans `docs/pdf/`.
 - `analysis/` — ce qui a servi à produire le guide : le contenu structuré (`final.json`), les extraits gravés (`excerpts/`, SVG et MusicXML, rendus avec Verovio) et les scripts Python (music21, Verovio, export PDF).
 
 ## Méthode

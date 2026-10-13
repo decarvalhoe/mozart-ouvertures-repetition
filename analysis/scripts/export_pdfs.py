@@ -29,6 +29,9 @@ ok = to_pdf(wrapped, PDF / "Guide de repetition - Nina Ramousse.pdf")
 print("guide pdf:", ok)
 wrapped.unlink(missing_ok=True)
 
+if (SITE / "programmes.html").exists():
+    print("programmes pdf:", to_pdf(SITE / "programmes.html", PDF / "Programmes de concert - combinaisons.pdf"))
+
 order = json.loads((SITE / "fiches_order.json").read_text(encoding="utf-8")) if (SITE / "fiches_order.json").exists() else None
 fiches = sorted((SITE / "fiches").glob("*.html"))
 if order:
