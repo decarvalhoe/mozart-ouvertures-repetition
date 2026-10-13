@@ -68,7 +68,7 @@ footer{margin-top:2rem;font-family:var(--mono);font-size:.72rem;color:var(--mute
 <body><div class="sheet">
 <a class="back" href="index.html">← Retour au guide</a>
 <div class="head"><h1>Programmes de concert</h1><div class="prog">Pour Nina Ramousse · direction depuis le premier violon</div></div>
-<div class="aud">Une demi-heure, orchestre réduit, sans baroque : cinq combinaisons autour de la Pavane de Ravel et de Tico-Tico</div>
+<div class="aud">Une demi-heure, orchestre réduit, sans baroque : cinq programmes et sept medleys testés autour de la Pavane de Ravel et de Tico-Tico</div>
 <h2>Le cahier des charges</h2>
 <ul>
 <li><strong>Durée</strong> : 30 minutes de musique (28 à 32 min), en quatre ou cinq œuvres courtes.</li>
@@ -650,5 +650,745 @@ footer{margin-top:2rem;font-family:var(--mono);font-size:.72rem;color:var(--mute
 <li><strong>Temps de répétition</strong> : compter une répétition de trois heures par tranche de dix minutes de musique nouvelle pour un orchestre d’étudiants, soit trois répétitions pour un programme de trente minutes, plus une générale.</li>
 <li><strong>Direction</strong> : pour les pièces où Nina est soliste, confier la levée au deuxième chef d’attaque (premier violon, deuxième pupitre), convenu à l’avance ; Nina reprend la direction dès qu’elle rejoint le tutti.</li>
 </ul>
+<h2>Tests en mode medley</h2>
+<p>Le medley enchaîne des <strong>extraits</strong> sans pause, reliés par des ponts. Chaque essai ci-dessous a été calculé par l’outil <code>atelier medley</code> (<a href="https://github.com/decarvalhoe/atelier-arrangement">dépôt atelier-arrangement</a>) à partir d’un répertoire élargi de 40 pièces (domaine public, sans baroque, orchestre réduit). L’outil :</p>
+<ul>
+<li>choisit l’ordre qui minimise les distances tonales entre la fin d’un extrait et le début du suivant (cycle des quintes), en gardant la Pavane de Ravel et <em>Tico-Tico</em> (toujours en finale) ;</li>
+<li>pénalise trois extraits lents (ou rapides) d’affilée ;</li>
+<li>dimensionne chaque pont (0, 2, 4 ou 8 mesures selon la distance tonale), le minute au tempo de l’extrait suivant et l’ajoute au total ;</li>
+<li>signale les instruments à ajouter à l’effectif de base et les tonalités à vérifier sur la partition.</li>
+</ul>
+<p>Cible : 30 minutes ± 1,5, ponts compris.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Medley</th>
+<th>Extraits</th>
+<th>Musique + ponts = total (min)</th>
+<th>Coût tonal</th>
+<th>Creux</th>
+<th>Effectif en plus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Programme 1 « Deux pavanes » converti en medley</td>
+<td>8</td>
+<td>28.5 + 1.1 = <strong>29.6</strong></td>
+<td>13</td>
+<td>1</td>
+<td>percussion légère</td>
+</tr>
+<tr>
+<td>Programme 1 corrigé : une danse rapide remplace l'Entr'acte</td>
+<td>9</td>
+<td>30.5 + 0.7 = <strong>31.2</strong></td>
+<td>9</td>
+<td>0</td>
+<td>percussion, percussion légère</td>
+</tr>
+<tr>
+<td>Danses du monde</td>
+<td>11</td>
+<td>30.5 + 0.3 = <strong>30.8</strong></td>
+<td>8</td>
+<td>0</td>
+<td>glockenspiel, percussion, percussion légère, triangle, trompettes</td>
+</tr>
+<tr>
+<td>Paris 1900</td>
+<td>10</td>
+<td>30.0 + 1.1 = <strong>31.1</strong></td>
+<td>15</td>
+<td>0</td>
+<td>percussion, percussion légère, trombones, trompettes</td>
+</tr>
+<tr>
+<td>Contes et ballets</td>
+<td>11</td>
+<td>30.0 + 0.5 = <strong>30.5</strong></td>
+<td>10</td>
+<td>0</td>
+<td>célesta ou piano, percussion, percussion légère, timbales, triangle, trombones, trompettes</td>
+</tr>
+<tr>
+<td>Effectif de base seul (aucun instrument en plus)</td>
+<td>9</td>
+<td>29.0 + 0.6 = <strong>29.6</strong></td>
+<td>9</td>
+<td>0</td>
+<td>percussion légère</td>
+</tr>
+<tr>
+<td>Nina soliste, et chacun son tour</td>
+<td>9</td>
+<td>29.5 + 0.5 = <strong>30.0</strong></td>
+<td>6</td>
+<td>0</td>
+<td>percussion, percussion légère</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ce que montrent les tests</strong></p>
+<ul>
+<li>Les sept medleys tiennent dans la demi-heure ; les ponts représentent de 0,3 à 1,1 min.</li>
+<li><strong>Le Programme 1, converti tel quel, ne marche pas bien en medley</strong> : avec une seule pièce rapide (<em>Tico-Tico</em>), trois extraits lents restent enchaînés quel que soit l’ordre. Remplacer l’Entr’acte de <em>Carmen</em> par l’Aragonaise et ajouter le Menuet de Boccherini (variante 1b) supprime le creux et fait passer le coût tonal de 13 à 9.</li>
+<li><strong>« Effectif de base seul »</strong> est le seul medley qui ne demande rien de plus que bois par deux, deux cors, harpe et cordes (plus une percussion légère pour <em>Tico-Tico</em>) : c’est le plus simple à monter.</li>
+<li><strong>« Nina soliste »</strong> a les meilleurs enchaînements (coût tonal 6) : presque tout se fait par ton voisin.</li>
+<li><strong>« Paris 1900 »</strong> a la plus belle couleur mais un passage tonal lointain (Clair de lune en ré♭ majeur) : il faut y écrire un vrai pont ou couper sur un accord commun.</li>
+<li><strong>« Contes et ballets »</strong> est le plus spectaculaire, mais le plus exigeant en effectif (trompettes, trombones, timbales, percussion, célesta ou piano).</li>
+<li>Les tonalités marquées « à vérifier » (<em>Tico-Tico</em>, <em>Por una cabeza</em>, Gymnopédie, Pizzicato-Polka) dépendent de l’édition ou de l’arrangement retenu : les confirmer avant d’écrire les ponts.</li>
+</ul>
+<h3>Programme 1 « Deux pavanes » converti en medley</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Extrait</th>
+<th>Tonalité</th>
+<th>Tempo</th>
+<th>Min</th>
+<th>Enchaînement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Fauré, Pavane op. 50</td>
+<td>fa♯ mineur</td>
+<td>84</td>
+<td>4.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 84→66</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Massenet, Méditation de Thaïs (violon solo)</td>
+<td>ré majeur</td>
+<td>66</td>
+<td>4.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 66→54</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ravel, Pavane pour une infante défunte</td>
+<td>sol majeur</td>
+<td>54</td>
+<td>5.5</td>
+<td>pont de 4 mesures qui module (3 quintes) ; tempo 54→72</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Elgar, Salut d'amour</td>
+<td>mi majeur</td>
+<td>72</td>
+<td>3</td>
+<td>pont de 8 mesures, ou coupure nette sur un accord commun (5 quintes) ; tempo 72→66</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bizet, Carmen : Entr'acte de l'acte III</td>
+<td>mi♭ majeur</td>
+<td>66</td>
+<td>2.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 66→60</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Fauré, Sicilienne (Pelléas)</td>
+<td>sol mineur</td>
+<td>60</td>
+<td>3</td>
+<td>pont de 2 mesures (ton voisin)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Bizet, L'Arlésienne : Adagietto</td>
+<td>fa majeur</td>
+<td>60</td>
+<td>2.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 60→126 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Abreu, Tico-Tico no Fubá (tonalité à vérifier)</td>
+<td>la mineur → la majeur</td>
+<td>126</td>
+<td>3</td>
+<td>fin</td>
+</tr>
+</tbody>
+</table></div>
+<p>Musique 28.5 min + ponts 1.1 min = <strong>29.6 min</strong> ; coût tonal 13 ; creux d’énergie 1.
+- ⚠ trois extraits lents d'affilée (5–7) : risque de creux
+- ⚠ ponts longs (≥ 4 quintes) après les extraits [4] : écrire un vrai pont ou couper sur un accord commun</p>
+<h3>Programme 1 corrigé : une danse rapide remplace l'Entr'acte</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Extrait</th>
+<th>Tonalité</th>
+<th>Tempo</th>
+<th>Min</th>
+<th>Enchaînement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Fauré, Pavane op. 50</td>
+<td>fa♯ mineur</td>
+<td>84</td>
+<td>4.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 84→72</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Elgar, Salut d'amour</td>
+<td>mi majeur</td>
+<td>72</td>
+<td>3</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 72→108 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Boccherini, Menuet (Quintette op. 11 n° 5)</td>
+<td>la majeur</td>
+<td>108</td>
+<td>2.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 108→66 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Massenet, Méditation de Thaïs (violon solo)</td>
+<td>ré majeur</td>
+<td>66</td>
+<td>4.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 66→54</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Ravel, Pavane pour une infante défunte</td>
+<td>sol majeur</td>
+<td>54</td>
+<td>5.5</td>
+<td>pont de 4 mesures qui module (2 quintes) ; tempo 54→132 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bizet, Carmen : Aragonaise</td>
+<td>ré mineur</td>
+<td>132</td>
+<td>2</td>
+<td>enchaînement direct, même tonalité ; tempo 132→60 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Bizet, L'Arlésienne : Adagietto</td>
+<td>fa majeur</td>
+<td>60</td>
+<td>2.5</td>
+<td>pont de 2 mesures (ton voisin)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fauré, Sicilienne (Pelléas)</td>
+<td>sol mineur</td>
+<td>60</td>
+<td>3</td>
+<td>pont de 4 mesures qui module (2 quintes) ; tempo 60→126 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abreu, Tico-Tico no Fubá (tonalité à vérifier)</td>
+<td>la mineur → la majeur</td>
+<td>126</td>
+<td>3</td>
+<td>fin</td>
+</tr>
+</tbody>
+</table></div>
+<p>Musique 30.5 min + ponts 0.7 min = <strong>31.2 min</strong> ; coût tonal 9 ; creux d’énergie 0.</p>
+<h3>Danses du monde</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Extrait</th>
+<th>Tonalité</th>
+<th>Tempo</th>
+<th>Min</th>
+<th>Enchaînement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Brahms, Danse hongroise n° 5 (orch. Parlow)</td>
+<td>sol mineur</td>
+<td>112</td>
+<td>2.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 112→132</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bizet, Carmen : Aragonaise</td>
+<td>ré mineur</td>
+<td>132</td>
+<td>2</td>
+<td>enchaînement direct, même tonalité ; tempo 132→72 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bizet, Carmen : Habanera</td>
+<td>ré mineur → ré majeur</td>
+<td>72</td>
+<td>2.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 72→108 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Boccherini, Menuet (Quintette op. 11 n° 5)</td>
+<td>la majeur</td>
+<td>108</td>
+<td>2.5</td>
+<td>pont de 4 mesures qui module (2 quintes) ; tempo 108→60 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tchaïkovski, Sérénade pour cordes : Valse</td>
+<td>sol majeur</td>
+<td>60</td>
+<td>3</td>
+<td>enchaînement direct, même tonalité ; tempo 60→54</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Ravel, Pavane pour une infante défunte</td>
+<td>sol majeur</td>
+<td>54</td>
+<td>4.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 54→112 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>J. et Jos. Strauss, Pizzicato-Polka (tonalité à vérifier)</td>
+<td>do majeur</td>
+<td>112</td>
+<td>2.5</td>
+<td>enchaînement direct, même tonalité ; tempo 112→132</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Grieg, Peer Gynt : La danse d'Anitra</td>
+<td>la mineur</td>
+<td>132</td>
+<td>3</td>
+<td>enchaînement direct, même tonalité ; tempo 132→76 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Joplin, The Entertainer (Red Back Book)</td>
+<td>do majeur</td>
+<td>76</td>
+<td>2.5</td>
+<td>enchaînement direct, même tonalité ; tempo 76→112 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Gardel, Por una cabeza (tonalité à vérifier)</td>
+<td>la mineur → la majeur</td>
+<td>112</td>
+<td>2.5</td>
+<td>pont de 4 mesures qui module (3 quintes) ; tempo 112→126</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Abreu, Tico-Tico no Fubá (tonalité à vérifier)</td>
+<td>la mineur → la majeur</td>
+<td>126</td>
+<td>3</td>
+<td>fin</td>
+</tr>
+</tbody>
+</table></div>
+<p>Musique 30.5 min + ponts 0.3 min = <strong>30.8 min</strong> ; coût tonal 8 ; creux d’énergie 0.</p>
+<h3>Paris 1900</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Extrait</th>
+<th>Tonalité</th>
+<th>Tempo</th>
+<th>Min</th>
+<th>Enchaînement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Bizet, Carmen : Prélude</td>
+<td>la majeur</td>
+<td>116</td>
+<td>2</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 116→56 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Offenbach, Barcarolle (Les Contes d'Hoffmann)</td>
+<td>ré majeur</td>
+<td>56</td>
+<td>3</td>
+<td>enchaînement direct, même tonalité ; tempo 56→66</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Satie, Gymnopédie n° 1 (orch. Debussy) (tonalité à vérifier)</td>
+<td>ré majeur</td>
+<td>66</td>
+<td>2.5</td>
+<td>pont de 4 mesures qui module (3 quintes) ; tempo 66→132 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Bizet, Carmen : Aragonaise</td>
+<td>ré mineur</td>
+<td>132</td>
+<td>2</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 132→60 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Fauré, Sicilienne (Pelléas)</td>
+<td>sol mineur</td>
+<td>60</td>
+<td>3</td>
+<td>pont de 4 mesures qui module (3 quintes) ; tempo 60→50</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Debussy, Clair de lune (orch. Caplet)</td>
+<td>ré♭ majeur</td>
+<td>50</td>
+<td>3.5</td>
+<td>pont de 8 mesures, ou coupure nette sur un accord commun (4 quintes) ; tempo 50→84 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Fauré, Pavane op. 50</td>
+<td>fa♯ mineur</td>
+<td>84</td>
+<td>3.5</td>
+<td>pont de 4 mesures qui module (2 quintes) ; tempo 84→40 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Saint-Saëns, Le Cygne (violoncelle solo)</td>
+<td>sol majeur</td>
+<td>40</td>
+<td>2.5</td>
+<td>enchaînement direct, même tonalité ; tempo 40→54</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Ravel, Pavane pour une infante défunte</td>
+<td>sol majeur</td>
+<td>54</td>
+<td>5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 54→126 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Abreu, Tico-Tico no Fubá (tonalité à vérifier)</td>
+<td>la mineur → la majeur</td>
+<td>126</td>
+<td>3</td>
+<td>fin</td>
+</tr>
+</tbody>
+</table></div>
+<p>Musique 30.0 min + ponts 1.1 min = <strong>31.1 min</strong> ; coût tonal 15 ; creux d’énergie 0.
+- ⚠ ponts longs (≥ 4 quintes) après les extraits [6] : écrire un vrai pont ou couper sur un accord commun</p>
+<h3>Contes et ballets</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Extrait</th>
+<th>Tonalité</th>
+<th>Tempo</th>
+<th>Min</th>
+<th>Enchaînement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Grieg, Peer Gynt : Au matin</td>
+<td>mi majeur</td>
+<td>58</td>
+<td>3</td>
+<td>enchaînement direct, même tonalité ; tempo 58→52</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mendelssohn, Songe d'une nuit d'été : Nocturne</td>
+<td>mi majeur</td>
+<td>52</td>
+<td>3</td>
+<td>pont de 4 mesures qui module (3 quintes) ; tempo 52→152 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Tchaïkovski, Casse-Noisette : Trépak</td>
+<td>sol majeur</td>
+<td>152</td>
+<td>1</td>
+<td>enchaînement direct, même tonalité ; tempo 152→72 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Tchaïkovski, Casse-Noisette : Danse de la Fée Dragée</td>
+<td>mi mineur</td>
+<td>72</td>
+<td>2</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 72→66</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tchaïkovski, Casse-Noisette : Valse des fleurs</td>
+<td>ré majeur</td>
+<td>66</td>
+<td>4</td>
+<td>enchaînement direct, même tonalité ; tempo 66→80</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tchaïkovski, Casse-Noisette : Danse des mirlitons</td>
+<td>ré majeur</td>
+<td>80</td>
+<td>2</td>
+<td>enchaînement direct, même tonalité ; tempo 80→138 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Grieg, Peer Gynt : Dans l'antre du roi de la montagne</td>
+<td>si mineur</td>
+<td>138</td>
+<td>2.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 138→54 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ravel, Pavane pour une infante défunte</td>
+<td>sol majeur</td>
+<td>54</td>
+<td>4.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 54→132 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Grieg, Peer Gynt : La danse d'Anitra</td>
+<td>la mineur</td>
+<td>132</td>
+<td>2.5</td>
+<td>pont de 4 mesures qui module (2 quintes) ; tempo 132→60 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Tchaïkovski, Casse-Noisette : Danse arabe</td>
+<td>sol mineur</td>
+<td>60</td>
+<td>2.5</td>
+<td>pont de 4 mesures qui module (2 quintes) ; tempo 60→126 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Abreu, Tico-Tico no Fubá (tonalité à vérifier)</td>
+<td>la mineur → la majeur</td>
+<td>126</td>
+<td>3</td>
+<td>fin</td>
+</tr>
+</tbody>
+</table></div>
+<p>Musique 30.0 min + ponts 0.5 min = <strong>30.5 min</strong> ; coût tonal 10 ; creux d’énergie 0.</p>
+<h3>Effectif de base seul (aucun instrument en plus)</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Extrait</th>
+<th>Tonalité</th>
+<th>Tempo</th>
+<th>Min</th>
+<th>Enchaînement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Mozart, Eine kleine Nachtmusik : Allegro</td>
+<td>sol majeur</td>
+<td>132</td>
+<td>3</td>
+<td>enchaînement direct, même tonalité ; tempo 132→60 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Grieg, Le dernier printemps op. 34/2</td>
+<td>sol majeur</td>
+<td>60</td>
+<td>3.5</td>
+<td>enchaînement direct, même tonalité ; tempo 60→84</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Elgar, Chanson de matin</td>
+<td>sol majeur</td>
+<td>84</td>
+<td>3</td>
+<td>pont de 4 mesures qui module (2 quintes) ; tempo 84→108</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Boccherini, Menuet (Quintette op. 11 n° 5)</td>
+<td>la majeur</td>
+<td>108</td>
+<td>2.5</td>
+<td>pont de 4 mesures qui module (2 quintes) ; tempo 108→60 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tchaïkovski, Sérénade pour cordes : Valse</td>
+<td>sol majeur</td>
+<td>60</td>
+<td>3</td>
+<td>enchaînement direct, même tonalité ; tempo 60→54</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Ravel, Pavane pour une infante défunte</td>
+<td>sol majeur</td>
+<td>54</td>
+<td>5</td>
+<td>pont de 4 mesures qui module (3 quintes) ; tempo 54→76</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Schubert, Rosamunde : Entracte n° 3</td>
+<td>si♭ majeur</td>
+<td>76</td>
+<td>3</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 76→60</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Mascagni, Cavalleria rusticana : Intermezzo</td>
+<td>fa majeur</td>
+<td>60</td>
+<td>3</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 60→126 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abreu, Tico-Tico no Fubá (tonalité à vérifier)</td>
+<td>la mineur → la majeur</td>
+<td>126</td>
+<td>3</td>
+<td>fin</td>
+</tr>
+</tbody>
+</table></div>
+<p>Musique 29.0 min + ponts 0.6 min = <strong>29.6 min</strong> ; coût tonal 9 ; creux d’énergie 0.</p>
+<h3>Nina soliste, et chacun son tour</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Extrait</th>
+<th>Tonalité</th>
+<th>Tempo</th>
+<th>Min</th>
+<th>Enchaînement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Schubert, Rosamunde : Ballet n° 2</td>
+<td>sol majeur</td>
+<td>72</td>
+<td>3</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 72→60</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mozart, Eine kleine Nachtmusik : Romanze</td>
+<td>do majeur</td>
+<td>60</td>
+<td>3</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 60→132 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bizet, Carmen : Aragonaise</td>
+<td>ré mineur</td>
+<td>132</td>
+<td>2</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 132→112</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gardel, Por una cabeza (tonalité à vérifier)</td>
+<td>la mineur → la majeur</td>
+<td>112</td>
+<td>2.5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 112→48 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Grieg, Peer Gynt : La mort d'Åse</td>
+<td>si mineur</td>
+<td>48</td>
+<td>2.5</td>
+<td>enchaînement direct, même tonalité ; tempo 48→72</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Fauré, Berceuse op. 16 (violon solo)</td>
+<td>ré majeur</td>
+<td>72</td>
+<td>3.5</td>
+<td>enchaînement direct, même tonalité ; tempo 72→66</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Massenet, Méditation de Thaïs (violon solo)</td>
+<td>ré majeur</td>
+<td>66</td>
+<td>5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 66→54</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ravel, Pavane pour une infante défunte</td>
+<td>sol majeur</td>
+<td>54</td>
+<td>5</td>
+<td>pont de 2 mesures (ton voisin) ; tempo 54→126 (point d'orgue ou ritenuto puis nouveau départ)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abreu, Tico-Tico no Fubá (tonalité à vérifier)</td>
+<td>la mineur → la majeur</td>
+<td>126</td>
+<td>3</td>
+<td>fin</td>
+</tr>
+</tbody>
+</table></div>
+<p>Musique 29.5 min + ponts 0.5 min = <strong>30.0 min</strong> ; coût tonal 6 ; creux d’énergie 0.</p>
 <footer>Durées et effectifs indicatifs ; vérifier chaque édition sur IMSLP avant d’imprimer le matériel.</footer>
 </div></body></html>
