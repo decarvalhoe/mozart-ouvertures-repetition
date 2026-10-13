@@ -172,6 +172,10 @@ Dans tous les cas, l’ordre suit la même logique : ouvrir par une pièce sûre
 - **Direction** : pour les pièces où Nina est soliste, confier la levée au deuxième chef d’attaque (premier violon, deuxième pupitre), convenu à l’avance ; Nina reprend la direction dès qu’elle rejoint le tutti.
 """
 
+rep = pathlib.Path(__file__).resolve().parent.parent / "atelier" / "docs" / "medleys-testes.md"
+if rep.exists():
+    md += "
+" + rep.read_text(encoding="utf-8")
 data["programmes"] = {"title": "Programmes de concert", "subtitle": "Une demi-heure, orchestre réduit, sans baroque : cinq combinaisons autour de la Pavane de Ravel et de Tico-Tico", "markdown": md}
 OUT.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
 print("programmes added", len(md), "chars")
